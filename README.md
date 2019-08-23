@@ -55,7 +55,7 @@ cd bexs-backend-challenge
 ./gradlew test
 ```
 
-## Project structure
+## Estrutura do projeto
 
 O projeto foi estruturado usando três módulos:
 
