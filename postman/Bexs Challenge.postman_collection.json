@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "0f6347df-5128-4bf3-9190-3cdf47b51240",
+		"name": "Bexs Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find best route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/routes/?source=GRU&destination=CDG",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"routes",
+						""
+					],
+					"query": [
+						{
+							"key": "source",
+							"value": "GRU"
+						},
+						{
+							"key": "destination",
+							"value": "CDG"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find best route",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/routes/?source=GRU&destination=CDG",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"routes",
+								""
+							],
+							"query": [
+								{
+									"key": "source",
+									"value": "GRU"
+								},
+								{
+									"key": "destination",
+									"value": "CDG"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "60"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"path\": \"GRU - BRC - SCL - ORL - CDG\",\n    \"price\": 40\n}"
+				}
+			]
+		},
+		{
+			"name": "Create new route",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"source\": \"SCL\",\n\t\"destination\": \"CDG\",\n\t\"price\": 2\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/routes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"routes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create new route",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"source\": \"SCL\",\n\t\"destination\": \"CDG\",\n\t\"price\": 2\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/routes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"routes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

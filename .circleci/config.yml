@@ -1,0 +1,59 @@
+version: 2.1
+
+commands:
+  build_project:
+    description: "Generates jar"
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: ./gradlew dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+      - run: ./gradlew clean assemble
+
+  execute_test:
+    description: "Execute application tests"
+    steps:
+      - run: sudo apt-get install libaio1
+      - run: ./gradlew check
+      - run:
+          name: Code coverage
+          command: |
+            ./gradlew jacocoRootReport
+            ./gradlew jacocoTestCoverageVerification
+            bash <(curl -s https://codecov.io/bash)
+      - store_test_results:
+          path: /home/circleci/dev-challenge/build/test-results/test
+
+jobs:
+  build:
+    working_directory: ~/dev-challenge
+    docker:
+      - image: circleci/openjdk:8
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - build_project
+  test:
+    working_directory: ~/dev-challenge
+    docker:
+      - image: circleci/openjdk:8
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - execute_test
+
+workflows:
+  "Project workflow":
+    jobs:
+      - build
+      - test:
+          requires:
+            - build

@@ -1,0 +1,6 @@
+rootProject.name = 'backend-challenge'
+
+include 'bexs-core'
+include 'bexs-console-interface'
+include 'bexs-api-interface'
+

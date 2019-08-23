@@ -1,0 +1,13 @@
+plugins {
+    id 'application'
+}
+
+mainClassName = 'br.com.bexs.backend.challenge.console.ConsoleApplicationKt'
+
+dependencies {
+    implementation project(':bexs-core')
+}
+
+run {
+    standardInput = System.in
+}
