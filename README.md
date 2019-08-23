@@ -7,6 +7,8 @@
 `------'   `----' '--'  '--' `----'     `-----' `--' `--'  `--`--' `--' `--'  `----' `--''--' .`-  /   `----' 
                                                                                               `---'                    
 ```
+[![CircleCI](https://circleci.com/gh/marioalvial/bexs-challenge.svg?style=svg)](https://circleci.com/gh/marioalvial/bexs-challenge)
+[![codecov](https://codecov.io/gh/marioalvial/bexs-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/marioalvial/bexs-challenge)
 
 > Desafio técnico da Bexs
 
